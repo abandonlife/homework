@@ -1,0 +1,31 @@
+package level3;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class BadApple {
+    public static void main(String[] args) throws IOException{
+        int readLine=48;
+        String fileName="D:\\source.txt";
+        String content=readPointline(fileName,readLine);
+        System.out.println(content);
+    }
+    public static String readPointline(String fileName,int readLine){
+        String line;
+        try {
+            BufferedReader br= Files.newBufferedReader(Paths.get(fileName));
+            int i=0;
+            while ((line=br.readLine())!=null){
+                Thread.sleep(1000/24);
+                i++;
+                if (i==readLine){
+                    return line;
+                }
+            }
+        }catch (IOException | InterruptedException e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+}
